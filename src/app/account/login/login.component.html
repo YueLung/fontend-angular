@@ -1,0 +1,17 @@
+<div class="container">
+  <div class=" board">
+    <form class="login-form" [formGroup]="form">
+      <div class="login-field">
+        <i class="login-icon fas fa-user"></i>
+        <input class="login-input" formControlName="account" type="text" placeholder="account" required>
+      </div>
+      <div class="login-field">
+        <i class="login-icon fas fa-lock"></i>
+        <input class="login-input" formControlName="password" type="password" placeholder="password" required>
+      </div>
+      <button class="login-button" (click)="login()">
+        <span>Submit</span>
+      </button>
+    </form>
+  </div>
+</div>
