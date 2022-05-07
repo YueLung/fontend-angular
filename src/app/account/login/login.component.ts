@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder) {
     this.form = this.fb.group({
       account: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['']
     });
   }
 
@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    localStorage.setItem('userName', this.form.get('account')?.value);
+    this.router.navigate(['']);
     // const formVal = this.form.value;
     // const model = <UserModel>{ account: formVal.account, password: formVal.password };
     // this.service.login(model).subscribe(result => {
