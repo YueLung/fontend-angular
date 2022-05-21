@@ -1,0 +1,34 @@
+[
+  {
+    "title": "通用功能",
+    "code": "MG-001",
+    "icon": "dashboard",
+    "child": [
+      {
+        "title": "Dashboard",
+        "code": "MG-001-001",
+        "icon": "dashboard",
+        "link": "/base/dashboard"
+      },
+      {
+        "title": "Dashboard2",
+        "code": "MG-001-002",
+        "icon": "dashboard",
+        "link": "/base/dashboard2"
+      }
+    ]
+  },
+  {
+    "title": "人資系統",
+    "code": "MG-002",
+    "icon": "people",
+    "child": [
+      {
+        "title": "001",
+        "code": "MG-002-001",
+        "icon": "pages",
+        "link": "/hr/001"
+      }
+    ]
+  }
+]

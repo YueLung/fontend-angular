@@ -1,0 +1,34 @@
+.margin-right { margin-right: 50px; }
+.margin-left { margin-left: 5px; }
+.margin-top { margin-top: 5px; }
+.margin-bottom { margin-bottom: 5px;}
+
+/* use: <div class="margin-left-1x"></div>
+ *
+ * margin-right-1x~5x
+ * margin-left-1x~5x
+ * margin-top-1x~5x
+ * margin-bottom-1x~5x
+ * padding-left-1x~5x
+ * ...
+ */
+
+$dirs: ('right', 'left', 'top', 'bottom');
+$values: (2px, 4px, 6px, 8px, 10px);
+
+@for $i from 1 through length($dirs) {
+  @for $j from 1 through length($values) {
+    .margin-#{nth($dirs, $i)}-#{$j}x {
+      margin-#{nth($dirs, $i)}: nth($values, $j);
+    }
+    .padding-#{nth($dirs, $i)}-#{$j}x {
+      padding-#{nth($dirs, $i)}: nth($values, $j);
+    }
+  }
+}
+
+//https: //yungshenglu.github.io/2017/12/24/SassNotes6/
+//http: //okaoka0709.blogspot.com/2015/12/scss-for.html
+
+
+

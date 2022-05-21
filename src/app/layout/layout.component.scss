@@ -1,0 +1,32 @@
+// @use 'sass:map';
+// @use 'node_modules/@angular/material/core/theming/theming';
+// @import '~@angular/material/theming';
+
+.header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+// Copy the palettes from your selected theme (usually theme.scss).
+// $app-primary: mat-palette($mat-grey);
+// $app-accent: mat-palette($mat-light-blue);
+// $app-warn: mat-palette($mat-pink);
+
+// Create your Sass color vars (will be available in all the project)
+// $primary: mat-color($app-primary);
+// $accent: mat-color($app-accent);
+// $warn: mat-color($app-warn);
+
+// $config: theming.get-color-config($config-or-theme);
+
+.content {
+  // background-color: $primary;
+}
+
+//https://medium.com/@aleixsuau/how-to-use-angular-material-2-sass-variables-in-your-components-76ce0203f126
+
