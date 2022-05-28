@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorage } from '../core/utils/local-storage';
-import { MenuModel } from './menu-model';
+import { MenuModel } from './models';
 
 @Component({
   selector: 'app-layout',

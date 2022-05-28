@@ -5,6 +5,7 @@ import { LayoutModule } from 'src/app/layout/layout.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShareModule } from 'src/app/shared/share.module';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -17,7 +18,8 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
     BaseRoutingModule,
     MaterialBaseModule,
     ShareModule,
-    LayoutModule
+    LayoutModule,
+    NgChartsModule
   ]
 })
 export class BaseModule { }

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
+//https://reurl.cc/e3yLAj
 @Component({
   selector: 'com-menu',
   templateUrl: './menu.component.html',
@@ -12,9 +13,4 @@ export class MenuComponent {
   @Input() isRootNode = false;
 
   constructor() { }
-
-  // isExpandable(node: string): boolean {
-  //   return this.database.isExpandable(node);
-  // }
-
 }
