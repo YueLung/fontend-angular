@@ -27,7 +27,7 @@ export class LayoutComponent implements OnInit {
 
   logout() {
     LocalStorage.removeUserName();
-    this.router.navigate(['/account/login']);
+    this.router.navigate(['/account/login2']);
   }
 
 }

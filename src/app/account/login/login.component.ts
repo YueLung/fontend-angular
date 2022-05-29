@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from '../shared/model';
 import { UserService } from '../shared/user.service';
 
@@ -24,6 +24,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.router.url.includes('login2')) {
+      setTimeout(() => {
+        localStorage.setItem('userName', 'guest');
+        this.router.navigate(['']);
+      }, 1000);
+
+    }
   }
 
   login() {

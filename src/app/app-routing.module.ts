@@ -5,11 +5,9 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { LocalStorage } from './core/utils/local-storage';
 
 function dynamicPathAccount(judge: string): (segments: UrlSegment[]) => UrlMatchResult | null {
-  return (segments: UrlSegment[]) : UrlMatchResult | null => {
-    if (segments.length === 0 || (segments.length === 1 && segments[0].path==='base'))
-    {
-      if (LocalStorage.getUserName()?.includes('s')){
-        console.log('123');
+  return (segments: UrlSegment[]): UrlMatchResult | null => {
+    if (segments.length === 0 || (segments.length === 1 && segments[0].path === 'base')) {
+      if (LocalStorage.getUserName()?.includes(judge)) {
         return { consumed: segments, posParams: {} };
       }
     }
@@ -18,7 +16,7 @@ function dynamicPathAccount(judge: string): (segments: UrlSegment[]) => UrlMatch
 }
 
 const routes: Routes = [
-  { matcher: dynamicPathAccount('T'), redirectTo:'hr'},
+  { matcher: dynamicPathAccount('TT'), redirectTo: 'hr' },
   { path: '', redirectTo: 'base', pathMatch: 'full' },
   {
     path: 'account',
