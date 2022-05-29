@@ -1,29 +1,27 @@
-<div class="container">
+<mat-form-field appearance="fill">
+  <mat-label>Player</mat-label>
+  <mat-select [(value)]="selectedPlayer" (valueChange)="loadData()">
+    <mat-option *ngFor="let player of playerList" [value]="player">
+      {{player.display}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-  <mat-card class="width-100">
-    <mat-card-title-group>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Small</mat-card-subtitle>
-    </mat-card-title-group>
-    <mat-card-content>
+<ng-template #loading>
+  <mat-spinner [strokeWidth]="2" [diameter]="50"></mat-spinner>
+</ng-template>
+
+<mat-card style="max-width: 600px;">
+  <mat-card-title-group>
+    <mat-card-title>Avg.</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <ng-container *ngIf="!isDataLoading;else loading">
       <div style="display: block">
-        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType">
+        <canvas baseChart [datasets]="avgChartData" [labels]="avgChartLabels" [options]="avgChartOptions" type="line"
+          [legend]="false">
         </canvas>
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="width-100">
-    <mat-card-title-group>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Small</mat-card-subtitle>
-    </mat-card-title-group>
-    <mat-card-content>
-      <div style="display: block">
-        <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
-        </canvas>
-      </div>
-    </mat-card-content>
-  </mat-card>
-
-</div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

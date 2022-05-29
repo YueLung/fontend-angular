@@ -3,5 +3,5 @@ export interface MenuModel {
   code: string;
   icon?: string;
   link?: string;
-  child?: MenuModel;
+  child?: Array<MenuModel>;
 }

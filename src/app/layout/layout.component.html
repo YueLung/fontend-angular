@@ -1,18 +1,25 @@
 <mat-toolbar color="primary" class="header-toolbar">
-  <com-menu [data]="menuModels" [isRootNode]="true" title="Menu" icon="menu"></com-menu>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu.childMenu">
+    <mat-icon class="margin-right-2x">menu</mat-icon>
+    <span>Menu</span>
+  </button>
+  <com-menu-item #menu [items]="menuModels"></com-menu-item>
+
   <mat-menu #vertebrates="matMenu">
     <button mat-menu-item routerLink="dashboard">dashboard</button>
     <button mat-menu-item routerLink="dashboard2">dashboard2</button>
   </mat-menu>
   <span class="spacer"></span>
-  <button mat-button [matMenuTriggerFor]="menu">
+  <button mat-button [matMenuTriggerFor]="menu2">
     <mat-icon class="margin-right-2x">account_circle</mat-icon>
     <span>{{ userName }}</span>
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu2="matMenu">
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </mat-toolbar>
+
 <div style="padding: 10px;" class="content">
   <router-outlet></router-outlet>
 </div>

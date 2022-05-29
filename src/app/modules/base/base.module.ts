@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShareModule } from 'src/app/shared/share.module';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { NgChartsModule } from 'ng2-charts';
+import { MlbService } from './apis/mlb.service';
 
 
 
@@ -20,6 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
     ShareModule,
     LayoutModule,
     NgChartsModule
-  ]
+  ],
+  providers: [MlbService]
 })
 export class BaseModule { }

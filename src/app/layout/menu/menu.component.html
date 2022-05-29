@@ -1,22 +1,19 @@
-<button *ngIf="isRootNode" mat-button [matMenuTriggerFor]="menu">
-  <mat-icon class="margin-right-2x">{{ icon }}</mat-icon>
-  <span>{{ title }}</span>
-</button>
-<button *ngIf="!isRootNode" mat-menu-item [matMenuTriggerFor]="menu">
-  <mat-icon>{{ icon }}</mat-icon>
-  <span> {{ title }}</span>
-</button>
-
-<mat-menu #menu="matMenu">
-  <ng-container *ngFor="let node of data; index as i">
-    <button mat-menu-item [routerLink]="node.link">
-      <com-menu [data]="node.child" [isRootNode]="false" [title]="node.title" [icon]="node.icon"
-        *ngIf="node.child; else menuItem">
-      </com-menu>
-    </button>
-    <ng-template #menuItem>
-      <mat-icon>{{ node.icon }}</mat-icon>
-      <span> {{ node.title }}</span>
-    </ng-template>
-  </ng-container>
+<mat-menu #childMenu="matMenu" [overlapTrigger]="false">
+  <span *ngFor="let child of items">
+    <!-- Handle branch node menu items -->
+    <span *ngIf="child.child && child.child.length > 0">
+      <button mat-menu-item [matMenuTriggerFor]="menu.childMenu">
+        <mat-icon>{{child.icon}}</mat-icon>
+        <span>{{child.title}}</span>
+      </button>
+      <com-menu-item #menu [items]="child.child"></com-menu-item>
+    </span>
+    <!-- Handle leaf node menu items -->
+    <span *ngIf="!child.child || child.child.length === 0">
+      <button mat-menu-item [routerLink]="child.link">
+        <mat-icon>{{child.icon}}</mat-icon>
+        <span>{{child.title}}</span>
+      </button>
+    </span>
+  </span>
 </mat-menu>

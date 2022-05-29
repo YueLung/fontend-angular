@@ -1,16 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MenuModel } from '../models';
 
-//https://reurl.cc/e3yLAj
+//https://stackblitz.com/edit/dynamic-nested-menus?file=app%2Fapp.component.ts
 @Component({
-  selector: 'com-menu',
+  selector: 'com-menu-item',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  @Input() data: any;
-  @Input() title = '';
-  @Input() icon = '';
-  @Input() isRootNode = false;
+  @ViewChild('childMenu') public childMenu: any;
+  @Input() items?: Array<MenuModel>;
 
   constructor() { }
 }
