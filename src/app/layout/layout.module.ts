@@ -6,12 +6,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutComponent } from './layout.component';
-import { MenuComponent } from './menu/menu.component';
+import { MenuItemComponent } from './menu/menu-item.component';
 
 
 
 @NgModule({
-  declarations: [LayoutComponent, MenuComponent],
+  declarations: [LayoutComponent, MenuItemComponent],
   imports: [
     RouterModule,
     CommonModule,

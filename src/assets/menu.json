@@ -7,13 +7,13 @@
       {
         "title": "Dashboard",
         "code": "MG-001-001",
-        "icon": "dashboard",
+        "icon": "assessment",
         "link": "/base/dashboard"
       },
       {
         "title": "Dashboard2",
         "code": "MG-001-002",
-        "icon": "dashboard",
+        "icon": "assessment",
         "link": "/base/dashboard2"
       }
     ]

@@ -4,10 +4,10 @@ import { MenuModel } from '../models';
 //https://stackblitz.com/edit/dynamic-nested-menus?file=app%2Fapp.component.ts
 @Component({
   selector: 'com-menu-item',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  templateUrl: './menu-item.component.html',
+  styleUrls: ['./menu-item.component.scss']
 })
-export class MenuComponent {
+export class MenuItemComponent {
   @ViewChild('childMenu') public childMenu: any;
   @Input() items?: Array<MenuModel>;
 
