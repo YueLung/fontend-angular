@@ -15,10 +15,15 @@ export class DashboardComponent implements OnInit {
   avgChartLabels: Array<string> = [];
   avgChartData: Array<ChartDataType> = [];
   avgChartOptions: ChartOptions = { responsive: true };
+  totalHit = 0;
+  totalHr = 0;
+  totalSb = 0;
+  totalRbi = 0;
 
   playerList = [
-    { display: 'Shohei Ohtani', value: 'Shohei' },
-    { display: 'Ichiro suzuki', value: 'Ichiro' }
+    { display: '鈴木一郎', value: 'Ichiro' },
+    { display: '大谷翔平', value: 'Shohei' },
+    { display: 'Barry Bonds', value: 'barry bonds' },
   ]
 
   selectedPlayer?: { display: string, value: string };
@@ -37,6 +42,10 @@ export class DashboardComponent implements OnInit {
 
     this.avgChartLabels = [];
     this.avgChartData = [{ data: [], label: this.selectedPlayer.display }];
+    this.totalHit = 0;
+    this.totalHr = 0;
+    this.totalSb = 0;
+    this.totalRbi = 0;
 
     this.service.getPlayerPastYearHittingsStats(this.selectedPlayer.value).subscribe(result => {
       result.forEach(seasonData => {
@@ -46,10 +55,18 @@ export class DashboardComponent implements OnInit {
           data.forEach((stats: any) => {
             this.avgChartLabels.push(`${stats.season}-${stats.team_short}`);
             this.avgChartData[0].data.push(stats.avg);
+            this.totalHit += +stats.h;
+            this.totalHr += +stats.hr;
+            this.totalSb += +stats.sb;
+            this.totalRbi += +stats.rbi;
           });
         } else {
           this.avgChartLabels.push(`${data.season}-${data.team_short}`);
           this.avgChartData[0].data.push(data.avg);
+          this.totalHit += +data.h;
+          this.totalHr += +data.hr;
+          this.totalSb += +data.sb;
+          this.totalRbi += +data.rbi;
         }
       });
 
