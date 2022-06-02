@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { MlbService } from '../apis/mlb.service';
+import { StatsModel } from '../models/mlb.model';
 
 type ChartDataType = { data: Array<number>, label: string };
 
@@ -12,9 +13,14 @@ type ChartDataType = { data: Array<number>, label: string };
 export class DashboardComponent implements OnInit {
   isDataLoading = false;
 
-  avgChartLabels: Array<string> = [];
+  yearChartLabels: Array<string> = [];
   avgChartData: Array<ChartDataType> = [];
-  avgChartOptions: ChartOptions = { responsive: true };
+  hChartData: Array<ChartDataType> = [];
+  chartOptions: ChartOptions = { responsive: true };
+  tableData: Array<StatsModel> = [];
+  // tableColumns = ['year', 'team', 'g'];
+  // tableColumnsDisplay = ['Year', 'Team', 'G'];
+
   totalHit = 0;
   totalHr = 0;
   totalSb = 0;
@@ -24,6 +30,8 @@ export class DashboardComponent implements OnInit {
     { display: '鈴木一郎', value: 'Ichiro' },
     { display: '大谷翔平', value: 'Shohei' },
     { display: 'Barry Bonds', value: 'barry bonds' },
+    { display: 'Derek Jeter', value: 'Derek Jeter' },
+    { display: 'Mike Trout', value: 'Mike Trout' }
   ]
 
   selectedPlayer?: { display: string, value: string };
@@ -40,8 +48,10 @@ export class DashboardComponent implements OnInit {
 
     this.isDataLoading = true;
 
-    this.avgChartLabels = [];
+    this.yearChartLabels = [];
     this.avgChartData = [{ data: [], label: this.selectedPlayer.display }];
+    this.hChartData = [{ data: [], label: this.selectedPlayer.display }];
+    this.tableData = [];
     this.totalHit = 0;
     this.totalHr = 0;
     this.totalSb = 0;
@@ -53,20 +63,48 @@ export class DashboardComponent implements OnInit {
 
         if (Array.isArray(data)) {
           data.forEach((stats: any) => {
-            this.avgChartLabels.push(`${stats.season}-${stats.team_short}`);
+            this.yearChartLabels.push(`${stats.season}-${stats.team_short}`);
             this.avgChartData[0].data.push(stats.avg);
+            this.hChartData[0].data.push(stats.h);
             this.totalHit += +stats.h;
             this.totalHr += +stats.hr;
             this.totalSb += +stats.sb;
             this.totalRbi += +stats.rbi;
+            this.tableData.push({
+              year: stats.season,
+              team: stats.team_short,
+              g: stats.g,
+              pa: stats.tpa,
+              ab: stats.ab,
+              h: stats.h,
+              hr: stats.hr,
+              bb: stats.bb,
+              sb: stats.sb,
+              avg: stats.avg,
+              slg: stats.slg,
+            })
           });
         } else {
-          this.avgChartLabels.push(`${data.season}-${data.team_short}`);
+          this.yearChartLabels.push(`${data.season}-${data.team_short}`);
           this.avgChartData[0].data.push(data.avg);
+          this.hChartData[0].data.push(data.h);
           this.totalHit += +data.h;
           this.totalHr += +data.hr;
           this.totalSb += +data.sb;
           this.totalRbi += +data.rbi;
+          this.tableData.push({
+            year: data.season,
+            team: data.team_short,
+            g: data.g,
+            pa: data.tpa,
+            ab: data.ab,
+            h: data.h,
+            hr: data.hr,
+            bb: data.bb,
+            sb: data.sb,
+            avg: data.avg,
+            slg: data.slg,
+          })
         }
       });
 

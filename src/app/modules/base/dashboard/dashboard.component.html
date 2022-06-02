@@ -2,9 +2,9 @@
   <mat-spinner [strokeWidth]="2" [diameter]="50"></mat-spinner>
 </ng-template>
 
-
 <div class="container-fluid mb-2">
   <div class="row g-2">
+
     <div class="col-12">
       <mat-form-field appearance="fill">
         <mat-label>Player</mat-label>
@@ -19,7 +19,9 @@
       <mat-card class="bg-primary text-white">
         <mat-card-title>H</mat-card-title>
         <mat-card-content>
-          <p class="h3 mx-2">{{ totalHit }}</p>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <p class="h3 mx-2">{{ totalHit }}</p>
+          </ng-container>
         </mat-card-content>
       </mat-card>
     </div>
@@ -27,7 +29,9 @@
       <mat-card class="bg-danger text-white">
         <mat-card-title>HR</mat-card-title>
         <mat-card-content>
-          <p class="h3 mx-2">{{ totalHr }}</p>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <p class="h3 mx-2">{{ totalHr }}</p>
+          </ng-container>
         </mat-card-content>
       </mat-card>
     </div>
@@ -35,7 +39,9 @@
       <mat-card class="bg-warning text-white">
         <mat-card-title>SB</mat-card-title>
         <mat-card-content>
-          <p class="h3 mx-2">{{ totalSb }}</p>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <p class="h3 mx-2">{{ totalSb }}</p>
+          </ng-container>
         </mat-card-content>
       </mat-card>
     </div>
@@ -43,24 +49,80 @@
       <mat-card class="bg-info text-white">
         <mat-card-title>RBI</mat-card-title>
         <mat-card-content>
-          <p class="h3 mx-2">{{ totalRbi }}</p>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <p class="h3 mx-2">{{ totalRbi }}</p>
+          </ng-container>
         </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title>Avg.</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <div style="display: block">
+              <canvas baseChart [datasets]="avgChartData" [labels]="yearChartLabels" [options]="chartOptions"
+                type="line" [legend]="false">
+              </canvas>
+            </div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title>H</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+          <ng-container *ngIf="!isDataLoading;else loading">
+            <div style="display: block">
+              <canvas baseChart [datasets]="hChartData" [labels]="yearChartLabels" [options]="chartOptions" type="bar"
+                [legend]="false">
+              </canvas>
+            </div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-12">
+      <mat-card>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Year</th>
+              <th scope="col">Team</th>
+              <th scope="col">G</th>
+              <th scope="col">Pa</th>
+              <th scope="col">AB</th>
+              <th scope="col">H</th>
+              <th scope="col">HR</th>
+              <th scope="col">BB</th>
+              <th scope="col">SB</th>
+              <th scope="col">Avg</th>
+              <th scope="col">Slg</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tableData">
+              <th scope="row">{{ item.year }}</th>
+              <td>{{ item.team }}</td>
+              <td>{{ item.g }}</td>
+              <td>{{ item.pa }}</td>
+              <td>{{ item.ab }}</td>
+              <td>{{ item.h }}</td>
+              <td>{{ item.hr }}</td>
+              <td>{{ item.bb }}</td>
+              <td>{{ item.sb }}</td>
+              <td>{{ item.avg }}</td>
+              <td>{{ item.slg }}</td>
+            </tr>
+          </tbody>
+        </table>
       </mat-card>
     </div>
   </div>
 </div>
-
-<mat-card style="max-width: 600px;">
-  <mat-card-title-group>
-    <mat-card-title>Avg.</mat-card-title>
-  </mat-card-title-group>
-  <mat-card-content>
-    <ng-container *ngIf="!isDataLoading;else loading">
-      <div style="display: block">
-        <canvas baseChart [datasets]="avgChartData" [labels]="avgChartLabels" [options]="avgChartOptions" type="line"
-          [legend]="false">
-        </canvas>
-      </div>
-    </ng-container>
-  </mat-card-content>
-</mat-card>
