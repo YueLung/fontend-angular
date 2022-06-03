@@ -8,7 +8,7 @@ import { MenuModel } from '../models';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent {
-  @ViewChild('childMenu') public childMenu: any;
+  @ViewChild('childMenu') childMenu: any;
   @Input() items?: Array<MenuModel>;
 
   constructor() { }

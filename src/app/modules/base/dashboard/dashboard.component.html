@@ -2,7 +2,7 @@
   <mat-spinner [strokeWidth]="2" [diameter]="50"></mat-spinner>
 </ng-template>
 
-<div class="container-fluid mb-2">
+<div class="container-fluid">
   <div class="row g-2">
 
     <div class="col-12">
@@ -58,7 +58,7 @@
     <div class="col-md-6 col-sm-12">
       <mat-card>
         <mat-card-title-group>
-          <mat-card-title>Avg.</mat-card-title>
+          <mat-card-title>Avg</mat-card-title>
         </mat-card-title-group>
         <mat-card-content>
           <ng-container *ngIf="!isDataLoading;else loading">
@@ -90,38 +90,41 @@
 
     <div class="col-12">
       <mat-card>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Year</th>
-              <th scope="col">Team</th>
-              <th scope="col">G</th>
-              <th scope="col">Pa</th>
-              <th scope="col">AB</th>
-              <th scope="col">H</th>
-              <th scope="col">HR</th>
-              <th scope="col">BB</th>
-              <th scope="col">SB</th>
-              <th scope="col">Avg</th>
-              <th scope="col">Slg</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of tableData">
-              <th scope="row">{{ item.year }}</th>
-              <td>{{ item.team }}</td>
-              <td>{{ item.g }}</td>
-              <td>{{ item.pa }}</td>
-              <td>{{ item.ab }}</td>
-              <td>{{ item.h }}</td>
-              <td>{{ item.hr }}</td>
-              <td>{{ item.bb }}</td>
-              <td>{{ item.sb }}</td>
-              <td>{{ item.avg }}</td>
-              <td>{{ item.slg }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered table-hover">
+            <caption>歷年數據</caption>
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Team</th>
+                <th scope="col">G</th>
+                <th scope="col">Pa</th>
+                <th scope="col">AB</th>
+                <th scope="col">H</th>
+                <th scope="col">HR</th>
+                <th scope="col">BB</th>
+                <th scope="col">SB</th>
+                <th scope="col">Avg</th>
+                <th scope="col">Slg</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of tableData">
+                <th scope="row">{{ item.year }}</th>
+                <td>{{ item.team }}</td>
+                <td>{{ item.g }}</td>
+                <td>{{ item.pa }}</td>
+                <td>{{ item.ab }}</td>
+                <td>{{ item.h }}</td>
+                <td>{{ item.hr }}</td>
+                <td>{{ item.bb }}</td>
+                <td>{{ item.sb }}</td>
+                <td>{{ item.avg }}</td>
+                <td>{{ item.slg }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </mat-card>
     </div>
   </div>
