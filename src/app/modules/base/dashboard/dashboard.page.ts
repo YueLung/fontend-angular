@@ -7,10 +7,10 @@ type ChartDataType = { data: Array<number>, label: string };
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  templateUrl: './dashboard.page.html',
+  styleUrls: ['./dashboard.page.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardPage implements OnInit {
   isDataLoading = false;
 
   yearChartLabels: Array<string> = [];

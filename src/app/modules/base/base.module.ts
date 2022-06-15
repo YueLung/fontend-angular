@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { BaseRoutingModule } from './base-routing.module';
 import { MaterialBaseModule } from './../../shared/material-base.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardPage } from './dashboard/dashboard.page';
 import { ShareModule } from 'src/app/shared/share.module';
-import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { Dashboard2Page } from './dashboard2/dashboard2.page';
 import { NgChartsModule } from 'ng2-charts';
 import { MlbService } from './apis/mlb.service';
+import { MaterialItemComponent } from './dashboard2/components/material-item.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    Dashboard2Component
+    DashboardPage,
+    Dashboard2Page,
+    MaterialItemComponent
   ],
   imports: [
     BaseRoutingModule,
