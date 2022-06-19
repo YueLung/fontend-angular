@@ -1,4 +1,14 @@
-<div class="d-flex flex-column align-items-center">
-  <mat-icon style="width: 50px; height: 50px; font-size: 50px;">{{ iconType }}</mat-icon>
-  <h6>{{ name }}</h6>
+<div class="d-flex flex-column align-items-center position-relative">
+  <div (mouseover)="onMouseover()" (mouseout)="onMouseout()" class="position-absolute icon-size" style="z-index: 9999;">
+  </div>
+  <mat-icon *ngIf="!isMouseOver" class="icon-size" style="font-size: 50px;">{{ model?.iconType }}</mat-icon>
+  <mat-progress-spinner *ngIf="isMouseOver" class="icon-size" mode="determinate" [value]="model?.percent">
+  </mat-progress-spinner>
+  <h6>{{ model?.name }}</h6>
+  <!-- <button mat-button [matMenuTriggerFor]="menu"></button> -->
 </div>
+
+<!-- <mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> -->

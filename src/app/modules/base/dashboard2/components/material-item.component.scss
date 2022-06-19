@@ -1,0 +1,22 @@
+@mixin icon-size {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.icon-size {
+  @include icon-size;
+}
+
+:host ::ng-deep {
+  mat-progress-spinner>svg {
+    @include icon-size;
+  }
+
+
+}
+
+::ng-deep {
+  .test {
+    background-color: red;
+  }
+}
