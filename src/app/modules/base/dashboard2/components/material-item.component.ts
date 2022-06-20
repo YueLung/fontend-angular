@@ -18,6 +18,13 @@ export class MaterialItemComponent implements OnInit {
     this.trigger?.openMenu();
   }
 
+  get color(): string {
+    if (this.model!.percent < 33) return 'warn';
+    if (this.model!.percent < 66) return 'accent';
+    if (this.model!.percent < 100) return 'primary';
+    return 'warn';
+  }
+
   constructor() { }
 
   ngOnInit(): void {

@@ -2,7 +2,8 @@
   <div (mouseover)="onMouseover()" (mouseout)="onMouseout()" class="position-absolute icon-size" style="z-index: 9999;">
   </div>
   <mat-icon *ngIf="!isMouseOver" class="icon-size" style="font-size: 50px;">{{ model?.iconType }}</mat-icon>
-  <mat-progress-spinner *ngIf="isMouseOver" class="icon-size" mode="determinate" [value]="model?.percent">
+  <mat-progress-spinner *ngIf="isMouseOver" class="icon-size" mode="determinate" [value]="model?.percent"
+    [color]="color">
   </mat-progress-spinner>
   <h6>{{ model?.name }}</h6>
   <!-- <button mat-button [matMenuTriggerFor]="menu"></button> -->
