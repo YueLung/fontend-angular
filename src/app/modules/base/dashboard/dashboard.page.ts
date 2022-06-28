@@ -18,8 +18,7 @@ export class DashboardPage implements OnInit {
   hChartData: Array<ChartDataType> = [];
   chartOptions: ChartOptions = { responsive: true };
   tableData: Array<StatsModel> = [];
-  // tableColumns = ['year', 'team', 'g'];
-  // tableColumnsDisplay = ['Year', 'Team', 'G'];
+  displayedColumns: string[] = ['year', 'team', 'g', 'pa', 'ab', 'h', 'hr', 'bb', 'sb', 'avg', 'slg'];
 
   totalHit = 0;
   totalHr = 0;
