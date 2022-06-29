@@ -1,3 +1,21 @@
 table {
   width: 100%;
 }
+
+[class*=mat-column] {
+  min-width: 50px;
+}
+
+.mat-column-year {
+  min-width: 80px;
+}
+
+.mat-column-team {
+  min-width: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+  .table-container {
+    max-height: 450px;
+  }
+}
