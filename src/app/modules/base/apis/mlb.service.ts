@@ -7,26 +7,40 @@ export class MlbService {
 
   constructor(private http: HttpClient) { }
 
-  getPlayerPastYearHittingsStats(player: string): Observable<any[]> {
-    return this.getPlayerInfo(player).pipe(
-      mergeMap(result => {
-        const playerId = result.search_player_all.queryResults.row.player_id;
-        return this.getPlayerDetailInfo(playerId);
-      }),
-      mergeMap(result => {
-        const data = result.player_info.queryResults.row;
-        const playerId = data.player_id;
-        const startDate = new Date(data.pro_debut_date)
-        const endDate = data.end_date ? new Date(data.end_date) : new Date(data.status_date)
+  getPlayerPastYearHittingsStats(player: any): Observable<any[]> {
 
-        let obsList = [];
-        for (var year = startDate.getFullYear(); year <= endDate.getFullYear(); year++) {
-          obsList.push(this.getHittingsStats(playerId, year.toString()));
-        }
+    const playerId = player.id;
+    const startDate = new Date(player.startDate)
+    const endDate = new Date(player.endDate)
 
-        return zip([...obsList]);
-      })
-    );
+    let obsList = [];
+    for (var year = startDate.getFullYear(); year <= endDate.getFullYear(); year++) {
+      obsList.push(this.getHittingsStats(playerId, year.toString()));
+    }
+
+    return zip([...obsList]);
+
+
+
+    // return this.getPlayerInfo(player).pipe(
+    //   mergeMap(result => {
+    //     const playerId = result.search_player_all.queryResults.row.player_id;
+    //     return this.getPlayerDetailInfo(playerId);
+    //   }),
+    //   mergeMap(result => {
+    //     const data = result.player_info.queryResults.row;
+    //     const playerId = data.player_id;
+    //     const startDate = new Date(data.pro_debut_date)
+    //     const endDate = data.end_date ? new Date(data.end_date) : new Date(data.status_date)
+
+    //     let obsList = [];
+    //     for (var year = startDate.getFullYear(); year <= endDate.getFullYear(); year++) {
+    //       obsList.push(this.getHittingsStats(playerId, year.toString()));
+    //     }
+
+    //     return zip([...obsList]);
+    //   })
+    // );
   }
 
   getTeamList(): Observable<any> {

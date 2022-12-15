@@ -19,7 +19,6 @@ export class RequestInterceptor implements HttpInterceptor {
       setHeaders: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Access-Control-Allow-Origin': '*'
       }
     });
 
