@@ -12,13 +12,13 @@ export class RequestInterceptor implements HttpInterceptor {
     var newUrl = req.url;
 
     if (req.url.startsWith('~/mlb-api'))
-      newUrl = req.url.replace('~/mlb-api', 'https://lookup-service-prod.mlb.com');
+      newUrl = req.url.replace('~/mlb-api', environment.mlb_api);
 
     const newRequest = req.clone({
       url: newUrl,
       setHeaders: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        // 'Content-Type': 'application/json',
+        // 'Accept': 'application/json'
       }
     });
 

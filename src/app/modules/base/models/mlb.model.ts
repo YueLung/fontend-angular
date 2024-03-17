@@ -1,13 +1,14 @@
-export interface StatsModel {
-  year: string,
-  team: string,
-  g: string,
-  pa: string,
-  ab: string,
-  h: string,
-  hr: string,
-  bb: string,
-  sb: string,
-  avg: string,
-  slg: string,
+export interface HitterStatsModel {
+  season: string,
+  team: string;
+  gamesPlayed: number,
+  plateAppearances: number,
+  atBats: number,
+  avg: number,
+  slg: number,
+  homeRuns: number,
+  hits: number,
+  rbi: number,
+  stolenBases: number,
+  baseOnBalls: number
 }
